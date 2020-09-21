@@ -9,4 +9,4 @@ substituting any variables beforehand.
 <br><br>Builds, (re)creates, starts, and attaches to containers for a service.
 <br>command - docker-compose up
 
-<br>Go to http://
+<br>Go to http://http://0.0.0.0:8000 to see django application through nginx
