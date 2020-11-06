@@ -6,8 +6,27 @@ services:
     build: .
     volumes:
       - .:/opt/services/djangoapp/src
-    networks:  # <-- here
+    networks: 
       - nginx_network
+      - db_network
+    depends_on:
+      - db
+
+  db:
+    image: mysql
+    volumes: 
+      - ./db/:/var/lib/mysql
+    ports:
+      - '3306:3306'
+    environment:
+       MYSQL_HOST: localhost
+       MYSQL_PORT: 3306
+       MYSQL_DATABASE: 'my-app-db'
+       MYSQL_USER: 'root'
+       MYSQL_PASSWORD: 'password'
+       MYSQL_ROOT_PASSWORD: 'password'
+    networks:
+      - db_network
 
   nginx:
     image: nginx
@@ -17,10 +36,12 @@ services:
       - ./config/nginx/conf.d:/etc/nginx/conf.d
     depends_on:
       - djangoapp
-    networks:  # <-- here
+    networks: 
       - nginx_network
 
-networks:  # <-- and here
+networks:  
   nginx_network:
+    driver: bridge
+  db_network:
     driver: bridge
 
