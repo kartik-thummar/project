@@ -20,5 +20,7 @@ from . import views
 urlpatterns = [
     path('', views.events, name='events'),
     path('events', views.events, name='events'),
-    path('about', views.about, name='about'),
+    path('about', views.about, name='about'), 
+    path('search', views.search, name='search'),
+    path('<str:slug>', views.eventPost, name='eventpost'),
 ]
