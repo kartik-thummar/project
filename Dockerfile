@@ -9,7 +9,7 @@ RUN mkdir -p /opt/services/djangoapp/src
 WORKDIR /opt/services/djangoapp/src
 
 # install our dependencies
-RUN pip install gunicorn django mysqlclient==1.4.2 django-mysql mysql-connector-python
+RUN pip install gunicorn django mysqlclient==1.4.2 django-mysql mysql-connector-python pylint-django
 
 # copy our project code
 COPY . /opt/services/djangoapp/src

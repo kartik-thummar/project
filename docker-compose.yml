@@ -4,6 +4,7 @@ services:
 
   djangoapp:
     build: .
+    
     volumes:
       - .:/opt/services/djangoapp/src
     networks: 
@@ -34,6 +35,7 @@ services:
       - 8000:80
     volumes:
       - ./config/nginx/conf.d:/etc/nginx/conf.d
+      - ./home/static:/opt/services/djangoapp/src/home/static
     depends_on:
       - djangoapp
     networks: 
