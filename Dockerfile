@@ -1,15 +1,12 @@
 # start from an official image
-FROM python
-
-# ENV PYTHONDONTWRITEBYTECODE 1
-# ENV PYTHONUNBUFFERED 1
+FROM python:3.8.2
 
 # arbitrary location choice: you can change the directory
 RUN mkdir -p /opt/services/djangoapp/src
 WORKDIR /opt/services/djangoapp/src
 
 # install our dependencies
-RUN pip install gunicorn django mysqlclient==1.4.2 django-mysql mysql-connector-python pylint-django
+RUN pip install gunicorn==20.0.4 django==3.1.7 mysqlclient==1.4.2 django-mysql==3.11.1 mysql-connector-python==8.0.23 pylint-django==2.4.2
 
 # copy our project code
 COPY . /opt/services/djangoapp/src
