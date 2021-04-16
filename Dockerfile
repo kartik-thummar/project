@@ -1,7 +1,7 @@
 # start from an official image
 FROM python:3.8.2
 
-# arbitrary location choice: you can change the directory
+# arbitrary location choice: we can change the directory
 RUN mkdir -p /opt/services/djangoapp/src
 WORKDIR /opt/services/djangoapp/src
 
