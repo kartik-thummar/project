@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %} Add new Post Category {% endblock title %}
+
+{% block body %}
+
+<div class="container my-3">
+
+{% if user.is_authenticated %}
+    <h3> Add new Category </h3>
+
+    <table>
+    <div class="form-group">
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_table }}
+            {% comment %} {{ form.as_p }} #represents form as Paragraph {% endcomment %}
+            {% comment %} {{ from.as_ul }} #represents form as Unordered List {% endcomment %}
+
+    </table>
+    <button class= "btn btn-secondary"> Add Category </button>
+
+{% else %}
+    <p>You are not authenticated to Add new Category.</P>
+
+{% endif %}
+
+    </div>
+</div>
+
+{% endblock body %}

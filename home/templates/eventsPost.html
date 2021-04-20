@@ -5,13 +5,30 @@
 {% block body %}
 
 <div class="container my-3">
-        <h2 class="blog-post-title">{{post.title}}</h2>
-        {% comment %} <p class="blog-post-meta">{{post.timeStamp}} by <a href="/about"> {{post.author}}</a></p> {% endcomment %}
+        {% if post.content %}
 
-        <p>This blog post shows a few different types of content that's supported and styled with bootsrap.</p>
-        {{post.content}}
+                {% comment %} 
+                Current User: {{ user.id }}
+                post auther: {{ post.author.id }} {% endcomment %}
 
+                <h2 class="blog-post-title"> {{post.title}} </h2> <a href={% url 'updatepost' post.slug %} > 
+                
+                {% if user.is_authenticated %}
+                        {% if user.id == post.author.id %}
+                                <small> [Edit] </a></small>
+                        {% endif %}
+                {% endif %}
+
+                <p class="blog-post-meta"> {{post.timeStamp}} by 
+                <a href="/"> {{post.author}} </a></p>
+                {{post.content|safe}}
+
+        {% endif %}
         <hr>
+        
+        <a href= "{% url 'events' %}" class="btn btn-secondary" > back </a>
+
 </div>
+
 
 {% endblock body %}

@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'events.apps.EventsConfig',
+    'members',
 ]
 
 MIDDLEWARE = [
@@ -132,3 +133,6 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = '/opt/services/djangoapp/src/home/'
 # STATIC_ROOT = '/home/home/static'
+
+LOGIN_REDIRECT_URL = 'events'
+LOGOUT_REDIRECT_URL = 'events'

@@ -21,34 +21,73 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item {% block eventactive %}  {% endblock eventactive %}">
-        <a class="nav-link" href="events"> Events <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="{% url 'events' %}"> Events <span class="sr-only">(current)</span></a>
       </li>
-            <li class="nav-item dropdown">
+      
+      {% if cat_menu %}
+      <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Category
         </a>
+        
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Cloud</a>
-          <a class="dropdown-item" href="#">Programing Language</a>
-          <a class="dropdown-item" href="#">Machine Learning and Artificial Intelligence</a>
-          <a class="dropdown-item" href="#">Algorithm and Data structures</a>
-          <a class="dropdown-item" href="#">Programing Laguages</a>
-          <a class="dropdown-item" href="#">Computer Network</a>
-          <a class="dropdown-item" href="#">Cyber Security</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Uncategarised</a>
+
+          {% for item in cat_menu %}
+            <a class="dropdown-item" href="{% url 'category' item|slugify %}"> {{ item }} </a>
+          {% endfor %}
+
+          {% comment %} <a class="dropdown-item" href="#">Cloud</a> {% endcomment %}
+          
+          {% comment %} <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Uncategarised</a> {% endcomment %}
         </div>
       </li>
-      <li class="nav-item {% block aboutactive %}  {% endblock aboutactive %}">
-        <a class="nav-link" href="about"> About </a>
+
+      {% else %}
+      <li class="nav-item {% block categoryactive %}  {% endblock categoryactive %}">
+        <a class="nav-link" href="{% url 'category-list' %}"> Category </a>
       </li>
+
+      {% endif %}
+
+      <li class="nav-item {% block aboutactive %}  {% endblock aboutactive %}">
+        <a class="nav-link" href="{% url 'about' %}"> About </a>
+      </li>
+      
+      {% if user.is_authenticated %}
+
+      <li class="nav-item btn-outline-success my-2 my-sm-0{% block addpostactive %}  {% endblock addpostactive %}">
+        <a class="nav-link" href="{% url 'addpost' %}"> Add new Event </a>
+      </li>
+
+      <li class="nav-item btn-outline-success my-2 my-sm-0{% block addcategoryactive %}  {% endblock addcategoryactive %}">
+        <a class="nav-link" href="{% url 'addcategory' %}"> Add Category </a>
+      </li>      
+
+      <li class="nav-item btn-outline-success my-2 my-sm-0{% block logoutactive %}  {% endblock logoutactive %}">
+        <a class="nav-link" href="{% url 'logout' %}"> Logout </a>
+      </li>      
+
+      {% else %}
+
+      <li class="nav-item btn-outline-success my-2 my-sm-0{% block registeractive %}  {% endblock registeractive %}">
+        <a class="nav-link" href="{% url 'register' %}"> Register </a>
+      </li>
+
+      <li class="nav-item btn-outline-success my-2 my-sm-0{% block loginactive %}  {% endblock loginactive %}">
+        <a class="nav-link" href="{% url 'login' %}"> Login </a>
+      </li>
+
+      {% endif %}
+
 
       <!-- <li class="nav-item">
         <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
       </li> -->
+
     </ul>
     <form method="get" action="/search" class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" name="query" id="search" type="search" placeholder="Search" aria-label="Search">
+      <input class="form-control " name="query" id="search" type="search" placeholder="Search" aria-label="Search">
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
     </form>
   </div>

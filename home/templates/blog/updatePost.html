@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block title %} Edit Post {% endblock title %}
+
+{% block body %}
+
+<div class="container my-3">
+
+{% if user.is_authenticated %}
+    {% if user.id == post.author.id %}
+    
+        <h3> Edit Post </h3>
+
+        <table>
+        <div class="form-group">
+            <form method="POST">
+                {% csrf_token %}
+                {{ form.as_table }}
+                {% comment %} {{ form.as_p }} #represents form as Paragraph {% endcomment %}
+                {% comment %} {{ from.as_ul }} #represents form as Unordered List {% endcomment %}
+
+        </table>
+        <br/>
+        <strong><a href='{% url 'deletepost' post.slug %}'> Delete Post </a></strong><br/>
+        <br/>
+        <button class= "btn btn-secondary"> Update </button>
+        </form>
+
+    {% else %}
+        <a>You are not valid author to edit content.</a>
+    {% endif %}
+
+{% else %}
+    <p> Yoy are not authenticated to edit this post </p>
+    
+{% endif %}
+
+    </div>
+</div>
+
+{% endblock body %}
