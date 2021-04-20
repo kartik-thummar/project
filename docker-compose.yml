@@ -4,7 +4,6 @@ services:
 
   djangoapp:
     build: .
-    
     volumes:
       - .:/opt/services/djangoapp/src
     networks: 
