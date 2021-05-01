@@ -5,7 +5,7 @@ services:
   djangoapp:
     build: .
     volumes:
-      - .:/opt/services/djangoapp/src
+      - .:/app
     networks: 
       - nginx_network
       - db_network
