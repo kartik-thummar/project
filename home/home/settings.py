@@ -131,8 +131,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = '/opt/services/djangoapp/src/home/'
+# STATIC_ROOT = '/opt/services/djangoapp/src/home/'
 # STATIC_ROOT = '/home/home/static'
+# STATIC_ROOT = '/app/'
 
 LOGIN_REDIRECT_URL = 'events'
 LOGOUT_REDIRECT_URL = 'events'
