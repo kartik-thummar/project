@@ -24,4 +24,4 @@ substituting any variables beforehand.
 <br><b> sudo ./start.sh </b>
 
 <br>To stop containers
-<br>< sudo ./stop.sh</b>
+<br><b> sudo ./stop.sh</b>
