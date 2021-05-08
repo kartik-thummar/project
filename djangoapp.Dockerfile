@@ -7,4 +7,6 @@ RUN pip install gunicorn==20.0.4 django==3.1.7 mysqlclient==1.4.2 django-mysql==
 
 COPY . /app/
 
+EXPOSE 8000
+
 CMD ["gunicorn", "--chdir", "home", "--bind", ":8000", "home.wsgi:application"]
