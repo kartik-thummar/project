@@ -14,7 +14,14 @@ substituting any variables beforehand.
 <br>Create network for project
 <br> <b>sudo docker network create django-db</b>
 
-<br>Run shell script to start containers
+<br> Build image of django application
+<br><b> sudo docker build -t djangoapp -f djangoapp.Dockerfile .
+
+<br>Give permissions to execute script
 <br><b> sudo chmod +x start.sh stop.sh </b>
 
+<br>To start containers
 <br><b> sudo ./start.sh </b>
+
+<br>To stop containers
+<br>< sudo ./stop.sh</b>
