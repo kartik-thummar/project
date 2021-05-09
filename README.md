@@ -11,7 +11,7 @@ substituting any variables beforehand.
 
 <!--<br>Go to http://0.0.0.0:8000 to see django application through nginx -->
 
-<br>Create common network for project
+<br>Create common network for 4 containers internal communication
 <br> <b>sudo docker network create django-db</b>
 
 <br> Build image of django application
