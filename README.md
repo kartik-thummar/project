@@ -11,7 +11,7 @@ substituting any variables beforehand.
 
 <!--<br>Go to http://0.0.0.0:8000 to see django application through nginx -->
 
-<br>Create network for project
+<br>Create common network for project
 <br> <b>sudo docker network create django-db</b>
 
 <br> Build image of django application
@@ -20,8 +20,14 @@ substituting any variables beforehand.
 <br>Give permissions to execute script
 <br><b> sudo chmod +x start.sh stop.sh </b>
 
-<br>To start containers
+<br>To start all 4 containers
 <br><b> sudo ./start.sh </b>
 
-<br>To stop containers
+<br>To stop all 4 containers
 <br><b> sudo ./stop.sh</b>
+
+<br> Serve djangoapp at </br>
+<br><b> http://localhost:8000/ </b></br>
+
+<br> Serve PhpMyAdmin at </br>
+<br><b> http://localhost:8001 </b></br>
