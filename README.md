@@ -30,4 +30,4 @@ substituting any variables beforehand.
 <br><b> http://localhost:8000/ </b></br>
 
 <br> Serve PhpMyAdmin at </br>
-<br><b> http://localhost:8001 </b></br>
+<br><b> http://localhost:8001/ </b></br>
